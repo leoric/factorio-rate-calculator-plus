@@ -1,3 +1,28 @@
+# Rate Calculator +
+
+# Fork of Rate Calculator focused on practical factory planning metrics.
+## What's different
+
+    Optional output limiting mode for final products based on internally produced ingredients.
+    Selection area metric based on bounding rectangle (width x height).
+    Final product density metric (production per tile).
+    Separate final-products density column in the GUI.
+    Header buttons to toggle:
+    Final-products density column visibility.
+    Output limiting mode.
+    Additional locale entries for the new GUI strings.
+
+## Notes
+
+    Base functionality and workflow of the original mod are preserved.
+    This fork is intended to stay compatible with Factorio 2.0 and flib >= 0.15.0.
+
+## You can contact me:
+azarow.mail.ru@gmail.com
+t.me/kesha356 
+
+#######
+
 # ⚠️ This project has migrated to [Codeberg](https://codeberg.org/raiguard/RateCalculator).
 
 
