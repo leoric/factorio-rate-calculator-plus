@@ -490,7 +490,9 @@ function calc_util.process_lab(set, entity, invert)
 
   for _, ingredient in ipairs(research_data.ingredients) do
     -- TODO: Select quality
-    local amount = (ingredient.amount * lab_multiplier) / prototypes.item[ingredient.name].get_durability()
+    local item_proto = prototypes.item[ingredient.name]
+    local durability = item_proto.type == "tool" and item_proto.get_durability() or 1
+    local amount = (ingredient.amount * lab_multiplier) / durability
     calc_util.add_rate(set, "input", "item", ingredient.name, "normal", amount, invert, entity.name)
   end
 end
