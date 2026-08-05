@@ -447,7 +447,7 @@ function gui_rates.update_display_data(self, set)
     local multiplier = is_watts and 1 or multiplier
     local divisor = is_watts and 1 or divisor
     return {
-      machine_counts = flib_table.map(rate.machine_counts, function(count)
+      machine_counts = flib_table.mapped(rate.machine_counts, function(count)
         return count * manual_multiplier
       end),
       machines = rate.machines * manual_multiplier,

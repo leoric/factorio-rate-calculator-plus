@@ -1,6 +1,5 @@
 local flib_bounding_box = require("__flib__.bounding-box")
 local flib_math = require("__flib__.math")
-local flib_migration = require("__flib__.migration")
 local flib_table = require("__flib__.table")
 
 local gui_util = require("scripts.gui-util")
@@ -480,7 +479,7 @@ function calc_util.process_lab(set, entity, invert)
     * researching_speed
     * science_pack_drain
 
-  local inputs = flib_table.invert(entity.prototype.lab_inputs)
+  local inputs = flib_table.inverted(entity.prototype.lab_inputs)
   for _, ingredient in pairs(research_data.ingredients) do
     if not inputs[ingredient.name] then
       calc_util.add_error(set, "incompatible-science-packs")
@@ -632,7 +631,7 @@ function calc_util.process_offshore_pump(set, entity, invert)
     return
   end
   local pumping_speed = 0
-  if flib_migration.is_newer_version("2.0.32", script.active_mods.base) then -- 2.0.33 or higher
+  if helpers.compare_versions("2.0.32", script.active_mods.base) < 0 then -- 2.0.33 or higher
     pumping_speed = entity.prototype.get_pumping_speed(entity.quality)
   else
     pumping_speed = entity.prototype.pumping_speed

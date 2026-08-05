@@ -523,7 +523,7 @@ local function build_gui(player)
         {
           type = "drop-down",
           name = "timescale_dropdown",
-          items = flib_table.map(gui_util.ordered_timescales, function(timescale)
+          items = flib_table.mapped(gui_util.ordered_timescales, function(timescale)
             return { "string-mod-setting.rcalc-default-timescale-" .. timescale }
           end),
           handler = { [defines.events.on_gui_selection_state_changed] = on_timescale_dropdown_changed },

@@ -1,4 +1,20 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.3
+Date: 2026-07-12
+  Bugfixes:
+    - Fixed a crash on startup: "module __flib__.migration not found". flib 0.17.0 removed the
+      deprecated flib_migration module entirely. Reimplemented scripts/migrations.lua's version-keyed
+      migration runner and calc-util.lua's flib_migration.is_newer_version() check using
+      helpers.compare_versions() instead.
+    - Fixed a stale reference to the old `global` table in a migration function; renamed to
+      `storage` (renamed back in Factorio 2.0).
+    - Fixed flib_table.invert(), which was hard-renamed to flib_table.inverted() in flib 0.17.0 and
+      would have crashed (lab science pack compatibility check).
+    - Fixed two flib_table.map() calls (drop-down timescale items, and machine_counts scaling).
+      flib 0.17.0 changed flib_table.map() to mutate its input table in place instead of returning
+      a new one; the old non-mutating behavior is now flib_table.mapped(). Left as map(), the
+      machine_counts scaling in particular would have compounded on every GUI refresh.
+---------------------------------------------------------------------------------------------------
 Version: 0.1.2
 Date: 2026-12-07
   Bugfixes:
