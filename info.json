@@ -1,19 +1,11 @@
 {
   "name": "RateCalculatorPlus",
-  "version": "0.1.3",
-  "title": "Rate Calculator +",
+  "version": "0.1.4",
+  "title": "Rate Calculator+",
   "description": "Fork of Rate Calculator: output limiting by available ingredients, selection rectangle area, and final product density metrics.",
-  "author": "raiguard, Kesha (fork)",
-  "contact": "https://github.com/raiguard/RateCalculator",
-  "homepage": "https://github.com/raiguard/RateCalculator",
+  "author": "leoric, raiguard, Kesha (fork)",
+  "contact": "https://github.com/leoric/factorio-rate-calculator-plus/issues",
+  "homepage": "https://github.com/leoric/factorio-rate-calculator-plus",
   "factorio_version": "2.1",
-  "dependencies": ["base >= 2.1", "flib >= 0.17.0"],
-  "package": {
-    "git_publish_branch": "master",
-    "ignore": ["crowdin.yml", "imgui.ini", "screenshots/*"],
-    "scripts": {
-      "prepublish": "factorio-crowdin-sync"
-    },
-    "sync_portal_details": true
-  }
+  "dependencies": ["flib >= 0.17.0"]
 }

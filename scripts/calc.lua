@@ -327,7 +327,14 @@ local function recalculate_set(set)
       research_data = set.research_data,
       pollutant = set.pollutant,
     }
-    process_entity(entity_set, entity)
+    local process_ok, process_err = pcall(process_entity, entity_set, entity)
+    if not process_ok then
+      -- Don't let one problematic entity (e.g. an edge-case modded entity
+      -- whose runtime attributes don't match expectations) take down the
+      -- entire calculation with a non-recoverable error.
+      log("RateCalculatorPlus: error processing entity '" .. entity.name .. "': " .. tostring(process_err))
+      goto continue
+    end
     set.entity_rates[entity_key] = entity_set.rates
     merge_rates(set.rates, entity_set.rates)
 

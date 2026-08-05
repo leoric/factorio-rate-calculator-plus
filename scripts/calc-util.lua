@@ -189,7 +189,18 @@ end
 --- @param invert boolean
 function calc_util.process_boiler(set, entity, invert)
   local entity_prototype = entity.prototype
-  local fluidbox = entity.fluidbox
+
+  -- Some modded "boiler" type entities (or entities in unusual states, e.g.
+  -- mid-destruction / not fully valid) don't actually expose a usable
+  -- fluidbox attribute, which raises a hard Lua error rather than returning
+  -- nil. Guard against that instead of crashing the whole recalculation.
+  local fluidbox_ok, fluidbox = pcall(function()
+    return entity.fluidbox
+  end)
+  if not fluidbox_ok or not fluidbox then
+    calc_util.add_error(set, "no-input-fluid")
+    return
+  end
 
   local input_fluid = get_fluid(fluidbox, 1)
   if not input_fluid then
